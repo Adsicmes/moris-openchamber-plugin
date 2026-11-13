@@ -1,0 +1,50 @@
+{
+  "name": "@moris/openchamber-plugin",
+  "version": "0.1.0",
+  "description": "OpenChamber Work Status section for Moris LLM Gateway: balance, quota windows and USD estimates, read by a host-side service.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  },
+  "openchamber": {
+    "apiVersion": 1,
+    "engines": {
+      "openchamber": ">=2.7.1"
+    },
+    "contributes": {
+      "panel": {
+        "id": "moris-gateway",
+        "name": "Moris Gateway",
+        "icon": "line-chart"
+      },
+      "statusSection": {
+        "source": {
+          "path": "/status",
+          "interval": 60000
+        },
+        "title": "Moris Gateway",
+        "height": 120,
+        "defaultExpanded": true
+      },
+      "service": {
+        "entry": "build/service/main.js",
+        "runtime": "host"
+      }
+    }
+  }
+}
