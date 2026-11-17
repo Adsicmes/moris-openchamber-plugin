@@ -19,10 +19,17 @@ Configuration is discovered from the same OpenCode config used by `@moris/openco
 
 The service binds `127.0.0.1`, requires the host bearer on every route, caches a successful read for 60 s and shares concurrent reads, so multiple clients do not each hit the gateway.
 
-Build before installing:
+Install from GitHub in Settings → Extensions, or open:
+
+[Install Moris Gateway](openchamber://extensions/install?url=https://github.com/Adsicmes/moris-openchamber-plugin)
+
+The repository root is the extension package: `package.json` and the committed `build/service/*.js` travel together, so installing does not build.
+
+Build after a source change:
 
 ```bash
-npm run build --workspace=@moris/openchamber-plugin
+npm install
+npm run build
 ```
 
-Full behaviour, limitations and verification notes: [`docs/clients.md`](../../docs/clients.md).
+Full behaviour, limitations and verification notes: [`docs/clients.md`](https://github.com/Adsicmes/moris-llm-gateway/blob/main/docs/clients.md).
